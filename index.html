@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>🎮 Игры Павла</title>
+<style>
+  :root{color-scheme:dark}
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;background:#0b1020;color:#fff;font-family:system-ui,Segoe UI,Roboto,sans-serif}
+  body{display:flex;flex-direction:column;align-items:center;padding:28px 16px 40px;background:radial-gradient(1200px 600px at 50% -10%,#1e2a5a 0%,#0b1020 60%)}
+  h1{font-size:clamp(28px,6vw,44px);margin:12px 0 4px;letter-spacing:.5px}
+  .sub{opacity:.65;font-size:15px;margin-bottom:28px;text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;width:min(760px,100%)}
+  a.card{display:block;text-decoration:none;color:#fff;background:#141b33;border:2px solid #ffffff1a;border-radius:20px;padding:22px 20px 18px;transition:transform .15s,border-color .15s,box-shadow .15s;position:relative;overflow:hidden}
+  a.card:hover,a.card:focus-visible{transform:translateY(-3px);border-color:#ffd54a;box-shadow:0 12px 40px #0008;outline:none}
+  a.card:active{transform:translateY(0)}
+  .icon{font-size:56px;line-height:1;margin-bottom:12px;filter:drop-shadow(0 4px 10px #0008)}
+  .name{font-size:24px;font-weight:700;margin-bottom:6px}
+  .desc{opacity:.75;font-size:14px;line-height:1.5;min-height:63px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .tag{font-size:12px;background:#ffffff14;border:1px solid #ffffff22;border-radius:999px;padding:3px 10px;opacity:.9}
+  .play{display:inline-block;margin-top:16px;background:#ffd54a;color:#000;font-weight:700;border-radius:12px;padding:10px 18px;font-size:15px}
+  .glow{position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;filter:blur(40px);opacity:.35;pointer-events:none}
+  footer{margin-top:36px;opacity:.5;font-size:13px;text-align:center;line-height:1.7}
+  footer a{color:#ffd54a;text-decoration:none}
+</style>
+</head>
+<body>
+  <h1>🎮 Игры</h1>
+  <div class="sub">Классика из тех времён, когда игры были лучше. Работают в браузере — на телефоне и на компьютере.</div>
+  <div class="grid">
+    <a class="card" href="https://pavel-ai-dev.github.io/gravity-defied-web/">
+      <div class="glow" style="background:#42a5f5"></div>
+      <div class="icon">🏍️</div>
+      <div class="name">Gravity Defied</div>
+      <div class="desc">Тот самый мототриал с кнопочных телефонов: баланс, трамплины, физика — и уровни, которые помнят пальцы.</div>
+      <div class="tags"><span class="tag">1 игрок</span><span class="tag">тач-кнопки</span><span class="tag">физика</span></div>
+      <span class="play">▶ Играть</span>
+    </a>
+    <a class="card" href="https://pavel-ai-dev.github.io/worms-web/">
+      <div class="glow" style="background:#ff5252"></div>
+      <div class="icon">🐛</div>
+      <div class="name">Червячки</div>
+      <div class="desc">Пошаговая артиллерия в духе Worms: разрушаемая земля, ветер, 29 видов оружия — от базуки до святой гранаты и овцы.</div>
+      <div class="tags"><span class="tag">против ИИ</span><span class="tag">вдвоём за одним экраном</span><span class="tag">звук Hedgewars</span></div>
+      <span class="play">▶ Играть</span>
+    </a>
+  </div>
+  <footer>
+    Исходники: <a href="https://github.com/pavel-ai-dev/gravity-defied-web">gravity-defied-web</a> ·
+    <a href="https://github.com/pavel-ai-dev/worms-web">worms-web</a> ·
+    <a href="https://github.com/pavel-ai-dev/games">games</a>
+  </footer>
+</body>
+</html>
