@@ -1,5 +1,5 @@
 [
-  { "icon": "⚔️", "name": "Ночь Орды", "sub": "выживание против орд: 5 карт по 8 мин, боссы, 16 оружий", "url": "https://pavel-ai-dev.github.io/games/survivors/" },
+  { "icon": "⚔️", "name": "Ночь Орды", "sub": "выживание против орд: 5 карт по 4 мин, боссы, 16 оружий", "url": "https://pavel-ai-dev.github.io/games/survivors/" },
   { "icon": "🐛", "name": "Червячки", "sub": "по сети семьёй или вдвоём, 45 оружий, разрушаемые карты", "url": "https://pavel-ai-dev.github.io/worms-web/" },
   { "icon": "🏍", "name": "Gravity", "sub": "мотоцикл по физике, трассы на время", "url": "https://pavel-ai-dev.github.io/gravity-defied-web/" }
 ]

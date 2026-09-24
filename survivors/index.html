@@ -126,7 +126,7 @@ canvas{position:fixed;inset:0;display:block;touch-action:none}
   <div class="big">👆</div>
   <p><b>Веди пальцем</b> в любом месте экрана — герой идёт следом. <b>Атакует он сам.</b></p>
   <p>💎 Собирай кристаллы → новый уровень → выбирай оружие и дары. До 6 оружий и 6 даров.</p>
-  <p>🗺 <b>5 карт по 8 минут.</b> Выжил — идёшь дальше: оружие и навыки остаются, здоровье восстанавливается. На каждой карте — свой босс.</p>
+  <p>🗺 <b>5 карт по 4 минуты.</b> Выжил — идёшь дальше: оружие и навыки остаются, здоровье восстанавливается. На каждой карте — свой босс.</p>
   <p>🪙 Золото остаётся после забега — трать в <b>Кузнице</b> и открывай героев. На 5-й карте ждёт Лич — убей его, и наступит рассвет.</p>
   <button class="btn big" id="b-tut">Понятно!</button>
 </div></div>
@@ -223,7 +223,7 @@ const ET={
   golem:{hp:260,spd:28,dmg:20,r:22,xp:12,col:'#9aa0aa',w:56,h:58},
   lich:{hp:15000,spd:42,dmg:25,r:32,xp:0,col:'#7dff9a',w:88,h:100},
 };
-const MAP_T=480,BOSS_AT=360;
+const MAP_T=240,BOSS_AT=180;
 const MAPS=[
   {n:'Тёмный лес',base:'#1d281b',b1:'rgba(44,62,36,.45)',b2:'rgba(18,26,17,.5)',dirt:'rgba(58,48,34,.45)',g1:'#2e4629',g2:'#3b5a31',boss:'orc',bn:'ВОЖДЬ ОРКОВ',bhp:3000,bsc:2.3,bc:'#ffb040',sum:'skel'},
   {n:'Проклятые топи',base:'#15221e',b1:'rgba(30,72,62,.5)',b2:'rgba(8,18,16,.55)',dirt:'rgba(60,80,30,.45)',g1:'#24453a',g2:'#3a5a3f',boss:'zombie',bn:'ЧУМНОЙ ВЕЛИКАН',bhp:7000,bsc:2.5,bc:'#9dff6a',sum:'zombie'},
@@ -297,8 +297,8 @@ document.addEventListener('contextmenu',e=>e.preventDefault());
 /* ===================== СОСТОЯНИЕ ИГРЫ ===================== */
 let state='menu',G=null,frame=0,menuT=0;
 let enemies=[],bullets=[],ebullets=[],pickups=[],fx=[],parts=[],texts=[],zones=[];
-const need=l=>3+l*5+Math.floor(l*l*.45);
-const DM=()=>(G.map-1)*3.5+G.t/60;
+const need=l=>2+l*3+Math.floor(l*l*.27);
+const DM=()=>(G.map-1)*3.5+G.t/30;
 function newRun(){
   const h=HEROES.find(x=>x.id===save.hero)||HEROES[0];
   G={hero:h,spr:SPR[h.id],t:0,x:0,y:0,fx:1,fy:0,face:1,hp:0,mhp:1,lvl:1,xp:0,need:need(1),kills:0,gold:0,inv:0,w:{},p:{},spawnAcc:0,orbA:0,auraT:0,shake:0,queue:[],later:[],revives:ML('revive'),boss:null,won:false,winT:0,walk:0,banner:null,elI:0,swI:0,warned:false,gems:0,lowT:0,map:1,total:0,gold0:0,kills0:0,trailP:null};
@@ -418,8 +418,8 @@ function spawnBoss(){const M=MAPS[G.map-1],a=Math.random()*TAU;const e=spawn(M.b
   G.boss=e;banner(M.bn,e.lich?'Убей его, чтобы встретить рассвет':'Убей — получишь сундук и золото',M.bc);shake(14)}
 function pickType(m){const w=[['bat',m<6?3:1],['skel',m<8?4:2],['zombie',m>1.2?3:0],['ghost',m>3?2.5:0],['orc',m>4.5?2+m*.15:0],['shaman',m>6?1.2:0],['golem',m>8.5?.7:0]];
   let s=0;for(const x of w)s+=x[1];let r=Math.random()*s;for(const x of w){r-=x[1];if(r<=0)return x[0]}return'skel'}
-const ELITES=[[90,'orc'],[210,'zombie'],[300,'golem'],[420,'orc']];
-const SWARMS=[[60,'bat'],[170,'bat'],[270,'ghost'],[400,'ghost']];
+const ELITES=[[45,'orc'],[105,'zombie'],[150,'golem'],[210,'orc']];
+const SWARMS=[[30,'bat'],[85,'bat'],[135,'ghost'],[200,'ghost']];
 function spawner(dt){
   const t=G.t,m=DM();if(G.won)return;
   if(G.elI<ELITES.length&&t>=ELITES[G.elI][0]){spawn(ELITES[G.elI][1],undefined,undefined,true);banner('ЭЛИТНЫЙ ВРАГ','Убей — получишь сундук','#ffb040');G.elI++}
@@ -714,7 +714,7 @@ function openChoice(kind){
 }
 function startGame(){
   newRun();only(null);state='play';$('pbtn').classList.remove('hide');last=performance.now();
-  banner(MAPS[0].n,'Карта 1 из '+MAPS.length+' · 8 минут до перехода','#ffe08a');
+  banner(MAPS[0].n,'Карта 1 из '+MAPS.length+' · 4 минуты до перехода','#ffe08a');
   if(!save.tut){state='tut';$('pbtn').classList.add('hide');show('s-tut')}
 }
 function pauseGame(){if(state!=='play')return;state='pause';joy.on=false;joy.dx=joy.dy=0;$('pbtn').classList.add('hide');$('p-owned').innerHTML=ownedHTML();$('p-time').textContent='🗺 '+G.map+'/'+MAPS.length+' · ⏱ '+fmt(G.t);show('s-pause')}
