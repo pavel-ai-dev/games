@@ -1,5 +1,4 @@
 [
-  {"icon": "🌀", "name": "ЭХО", "sub": "3D-головоломка: каждый бросок остаётся призраком, разбей кристаллы вместе со своим прошлым", "url": "https://pavel-ai-dev.github.io/games/echo/"},
   {"icon": "⚔️", "name": "Ночь Орды", "sub": "выживание против орд: вдвоём по сети, 5 карт, 15 навыков, бесконечный режим, испытание дня, эволюции оружия", "url": "https://pavel-ai-dev.github.io/games/survivors/"},
   {"icon": "🐛", "name": "Червячки", "sub": "по сети семьёй или вдвоём, 45 оружий, разрушаемые карты", "url": "https://pavel-ai-dev.github.io/worms-web/"},
   {"icon": "🏍", "name": "Gravity", "sub": "мотоцикл по физике, трассы на время", "url": "https://pavel-ai-dev.github.io/gravity-defied-web/"}
