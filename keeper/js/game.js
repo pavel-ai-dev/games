@@ -225,9 +225,9 @@ Game.prototype.startBoss = function () {
   this.shake(6); this.flash('#000', 0.4);
 };
 Game.prototype.endBoss = function () {
-  var self = this; this.mark('boss:' + this.zoneIndex);
+  var self = this, bname = (this.boss && this.boss.name) || 'Страж'; this.mark('boss:' + this.zoneIndex);
   for (var i = 0; i < this.gates.length; i++) this.level.set(this.gates[i].x, this.gates[i].y, TILE.AIR);
-  this.bossFight = null; this.boss = null; this.save_(); this.toast('Страж повержен', 'Путь открыт');
+  this.bossFight = null; this.boss = null; this.save_(); this.toast(bname + ' повержен(а)', 'Путь открыт');
 };
 
 // ---------------- камера

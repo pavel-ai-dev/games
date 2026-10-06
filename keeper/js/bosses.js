@@ -596,6 +596,15 @@ function SerpentBoss(g, x, y, arena) {
   g.add(new ArenaDeco(g, this));
 }
 bossInherit(SerpentBoss);
+SerpentBoss.INT = { idle: 1, recover: 1, spitwind: 1, tailwind: 1, wavewind: 1, bitewind: 1, tail: 1 };
+SerpentBoss.prototype.onHit = function (dmg, dir, info, attacker) {
+  var h0 = this.hp, r = bossOnHit.call(this, dmg, dir, info, attacker);
+  if (r) {
+    this.dmgAcc = (this.dmgAcc || 0) + (h0 - this.hp);
+    if (this.dmgAcc >= 5 && !this.dying && this.stun <= 0 && SerpentBoss.INT[this.state]) { this.dmgAcc = 0; this.tele = 0; this.waveT = 0; this.lastAtk = 'dive'; this.g.fx.text(this.px, this.floor - 120, 'НЫРЯЕТ', '#bff7ee'); this.setState('dive'); }
+  }
+  return r;
+};
 SerpentBoss.prototype.syncBody = function () {
   this.x = this.px - this.w / 2; this.y = this.floor - this.h * this.rise; this.light = 70 + 90 * this.rise;
 };
@@ -926,7 +935,11 @@ function ClockmakerBoss(g, x, y, arena) {
 }
 bossInherit(ClockmakerBoss);
 ClockmakerBoss.prototype.onHit = function (dmg, dir, info, attacker) {
-  var r = bossOnHit.call(this, dmg, dir, info, attacker);
+  var h0 = this.hp, r = bossOnHit.call(this, dmg, dir, info, attacker);
+  if (r) {
+    this.dmgAcc = (this.dmgAcc || 0) + (h0 - this.hp);
+    if (this.dmgAcc >= 7 && !this.dying && this.stun <= 0 && !this.pendingRewind && ClockmakerBoss.RW_OK[this.state]) { this.dmgAcc = 0; this.tele = 0; this.blinksLeft = 1; this.setState('blinkout'); }
+  }
   if (r && this.rewindReady && !this.dying && this.hp > 0 && this.stun <= 0 && this.hp <= this.phaseHp - 3 && ClockmakerBoss.RW_OK[this.state]) { this.rewindReady = false; this.pendingRewind = true; }
   return r;
 };
