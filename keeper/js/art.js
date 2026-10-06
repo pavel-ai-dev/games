@@ -946,7 +946,7 @@ var Art = (function () {
     }
     // предсборка соседей по одному за кадр
     var tried = 0;
-    for (cy = Math.max(0, r0 - 1); cy <= r1 + 1 && !built; cy++) for (cx = Math.max(0, c0 - 1); cx <= c1 + 1 && !built; cx++) {
+    for (cy = Math.max(0, r0 - 2); cy <= r1 + 2 && !built; cy++) for (cx = Math.max(0, c0 - 2); cx <= c1 + 2 && !built; cx++) {
       if (cx >= maxC || cy >= maxR || L.chunks[chunkKey(cx, cy)]) continue;
       getChunk(L, cx, cy, th); built = 1;
     }
