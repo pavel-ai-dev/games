@@ -1,2 +1,5 @@
 survivors/_build/
 echo/_test/
+
+# исходники Призмы (публикуется только сборка prism/)
+prism-src/

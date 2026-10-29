@@ -1,3 +1,14 @@
 [
-  {"icon": "🏍", "name": "Gravity", "sub": "мотоцикл по физике, трассы на время", "url": "https://pavel-ai-dev.github.io/gravity-defied-web/"}
+  {
+"icon": "🏍",
+"name": "Gravity",
+"sub": "мотоцикл по физике, трассы на время",
+"url": "https://pavel-ai-dev.github.io/gravity-defied-web/"
+},
+  {
+"icon": "💎",
+"name": "Призма",
+"sub": "мир головоломок: кольца, автобусы, кристаллы, отличия, стрелки",
+"url": "https://pavel-ai-dev.github.io/games/prism/"
+}
 ]
